@@ -1,0 +1,54 @@
+body {
+  font-family: $font-primary;
+  font-weight: 300;
+  text-align: justify;
+}
+
+.description {
+
+  &__heading {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: $color-secondary
+  }
+
+  &__title {
+    font-size: 2.75rem;
+    text-indent: 2rem;
+    font-family: $font-tertiary;
+    position: relative;
+    bottom: .25rem;
+  }
+
+  &__definition {
+    color: $color-primary;
+  }
+
+  &__location {
+    font-family: $font-secondary;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: $color-secondary;
+  }
+
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: right;
+    font-family: $font-secondary;
+    color: lighten($color-primary, 35%);
+
+    &:hover {
+      color: darken($color-secondary, 10%);
+    }
+
+  }
+
+}
+
+button {
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  color: $color-secondary;
+}

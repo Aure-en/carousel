@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+
+<head>
+  <title>Sliding Carousel</title>
+  <meta charset='utf-8'>
+  <link rel='stylesheet' href='css/style.css'>
+  <link href='https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Open+Sans:wght@300;400;600&family=Playfair+Display&display=swap' rel='stylesheet'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <script defer src='script.js'></script>
+</head>
+
+<body>
+
+  <div class='wrapper'>
+
+    <div class='container'>
+
+      <div class='description'>
+
+        <div class='description__text'>
+
+          <header class='description__header'>
+            <span class='description__heading'>Let's explore the world</span>
+            <h1 class='description__title' id="title">Mountain</h1>
+          </header>
+
+          <p class='description__definition' id="definition">A raised part of the earth's surface, much larger than a hill, the top of which might be covered in snow.</p>
+
+          <footer class='description__footer'>
+            <span class='description__location' id="location">Lake Louise, Canada</span>
+            <a class='description__credits' id='url' href=''>Picture by <span id="author">Daniel Roe</span><br> on Unsplash</a>
+          </footer>
+
+        </div>
+
+        <div class='description__buttons'>
+          <button type='button'>Prev.</button>
+          <button type='button'>Next.</button>
+        </div>
+        
+      </div>
+
+      <div class='carousel'>
+        <img class='carousel__image' src='assets/1.jpg'>
+        <img class='carousel__image' src='assets/2.jpg'>
+        <img class='carousel__image' src='assets/3.jpg'>
+        <img class='carousel__image' src='assets/4.jpg'>
+        <img class='carousel__image' src='assets/5.jpg'>
+      </div>
+
+    </div>
+
+    <ol class='carousel__nav'>
+      <button type='button'></button>
+      <button type='button'></button>
+      <button type='button'></button>
+      <button type='button'></button>
+      <button type='button'></button>
+    </ol>
+    
+
+  </div>
+
+</body>
+
+</html>

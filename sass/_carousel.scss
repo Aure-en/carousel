@@ -1,0 +1,16 @@
+.carousel {
+
+  overflow: hidden;
+  display: flex;
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__image {
+    max-width: 100%;
+    height: auto;
+  }
+
+}
