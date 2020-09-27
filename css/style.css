@@ -160,7 +160,11 @@ button {
 
 .carousel {
   overflow: hidden;
+}
+.carousel__images {
   display: flex;
+  height: 100%;
+  transition: all 0.35s ease;
 }
 .carousel__nav {
   display: flex;

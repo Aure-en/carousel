@@ -1,6 +1,5 @@
 const descriptionsModule = (() => {
-
-  let _descriptions = [
+  const _descriptions = [
     {
       title: 'Mountain',
       definition: 'A raised part of the earth\'s surface, much larger than a hill, the top of which might be covered in snow.',
@@ -41,34 +40,34 @@ const descriptionsModule = (() => {
       url: 'https://unsplash.com/photos/4u2U8EO9OzY'
     }
 
-  ];
+  ]
 
   const changeTitle = (obj, title) => {
-    obj.title = title;
+    obj.title = title
   }
 
   const changeDefinition = (obj, definition) => {
-    obj.definition = definition;
+    obj.definition = definition
   }
 
   const changeLocation = (obj, location) => {
-    obj.location = location;
+    obj.location = location
   }
 
   const changeAuthor = (obj, author) => {
-    obj.author = author;
+    obj.author = author
   }
 
   const changeURL = (obj, url) => {
-    obj.url = url;
+    obj.url = url
   }
 
   const removeDescription = (index) => {
-    this.descriptions = descriptions.splice(index, 1);
+    this.descriptions = descriptions.splice(index, 1)
   }
 
   const addDescription = (title, definition, location, author, url) => {
-    _descriptions.push({ title, definition, location, author, url});
+    _descriptions.push({ title, definition, location, author, url })
   }
 
   return {
@@ -80,12 +79,31 @@ const descriptionsModule = (() => {
     removeDescription,
     addDescription
   }
+})()
 
+const displayDescriptionsModule = () => {
+
+}
+
+const carouselController = (() => {
+
+  let currentPosition = 0;
+
+  const carousel = document.querySelector('.carousel__images');
+
+  const slideNext = function () {
+    this.currentPosition -= 100;
+    carousel.style.transform = `translateX(${this.currentPosition}%)`;
+  }
+
+  const slidePrev = function () {
+    this.currentPosition += 100;
+    carousel.style.transform = `translateX(${this.currentPosition}%)`;
+  }
+
+  return {
+    currentPosition,
+    slidePrev,
+    slideNext
+  }
 })();
-
-const displayDescriptionsModule = (() => {
-
-  
-
-
-})

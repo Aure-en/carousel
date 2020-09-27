@@ -1,7 +1,12 @@
 .carousel {
 
   overflow: hidden;
-  display: flex;
+
+  &__images {
+    display: flex;
+    height: 100%;
+    transition: all .35s ease;
+  }
 
   &__nav {
     display: flex;
