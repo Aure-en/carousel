@@ -42,13 +42,16 @@ body {
     &:hover {
       color: darken($color-secondary, 10%);
     }
-
   }
-
 }
 
 button {
   text-transform: uppercase;
   font-size: 0.65rem;
   color: $color-secondary;
+
+  &:hover {
+    color: darken($color-secondary, 15%);
+  }
+
 }

@@ -48,7 +48,7 @@ table {
 }
 
 button {
-  background: none;
+  background: #fff;
   border: none;
   cursor: pointer;
 
@@ -76,6 +76,7 @@ button {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   border: 1px solid $color-secondary;
+  background: #fff;
 }
 
 .description {

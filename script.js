@@ -148,21 +148,27 @@ const carouselBtns = (() => {
     const prev = document.querySelector('#prev')
 
     prev.addEventListener('click', carouselController.slidePrev)
-    prev.addEventListener('click', () => _changeActive(_active - 1))
-    prev.addEventListener('click', () => displayDescriptions.changeDescription(descriptionsContent.getDescription(_active - 1)))
+    prev.addEventListener('click', () => {
+      _changeActive(_active - 1)
+      displayDescriptions.changeDescription(descriptionsContent.getDescription(_active - 1))
+    })
   }
 
   const _slideNext = () => {
     const next = document.querySelector('#next')
     next.addEventListener('click', carouselController.slideNext)
-    next.addEventListener('click', () => _changeActive(_active + 1))
-    next.addEventListener('click', () => displayDescriptions.changeDescription(descriptionsContent.getDescription(_active - 1)))
+    next.addEventListener('click', () => {
+      _changeActive(_active + 1)
+      displayDescriptions.changeDescription(descriptionsContent.getDescription(_active - 1))
+    })
   }
 
   const _slideTo = () => {
-    _buttons.forEach((button) => button.addEventListener('click', (e) => carouselController.slideTo(e.target.dataset.image.slice(6))))
-    _buttons.forEach((button) => button.addEventListener('click', (e) => _changeActive(e.target.dataset.image.slice(6))))
-    _buttons.forEach((button) => button.addEventListener('click', (e) => displayDescriptions.changeDescription(descriptionsContent.getDescription(e.target.dataset.image.slice(6) - 1))))
+    _buttons.forEach((button) => button.addEventListener('click', (e) => {
+      carouselController.slideTo(e.target.dataset.image.slice(6))
+      _changeActive(e.target.dataset.image.slice(6))
+      displayDescriptions.changeDescription(descriptionsContent.getDescription(e.target.dataset.image.slice(6) - 1))
+    }))
   }
 
   const _changeActive = (index) => {
