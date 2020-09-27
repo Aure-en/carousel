@@ -55,6 +55,7 @@ table {
 button {
   background: none;
   border: none;
+  cursor: pointer;
 }
 button:focus {
   outline: none;
@@ -77,7 +78,7 @@ button:focus {
   max-height: 500px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border: 1px solid #608894;
+  border: 1px solid #6a9cac;
 }
 
 .description {
@@ -98,7 +99,7 @@ body {
   text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 2px;
-  color: #608894;
+  color: #6a9cac;
 }
 .description__title {
   font-size: 2.75rem;
@@ -114,7 +115,7 @@ body {
   font-family: "Open Sans Condensed", "Open Sans", "Open Sans Condensed", "Helvetica", "Verdana", "Arial";
   font-size: 0.9rem;
   letter-spacing: 1px;
-  color: #608894;
+  color: #6a9cac;
 }
 .description a {
   text-decoration: none;
@@ -124,13 +125,13 @@ body {
   color: #c1c1c1;
 }
 .description a:hover {
-  color: #4c6c75;
+  color: #518292;
 }
 
 button {
   text-transform: uppercase;
   font-size: 0.65rem;
-  color: #608894;
+  color: #6a9cac;
 }
 
 .description {
@@ -140,7 +141,7 @@ button {
   justify-content: center;
   padding: 2rem 2rem 1rem 2rem;
   align-items: center;
-  border-right: 1px solid #608894;
+  border-right: 1px solid #6a9cac;
 }
 .description__text {
   display: flex;
@@ -169,10 +170,27 @@ button {
 .carousel__nav {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .carousel__image {
   max-width: 100%;
   height: auto;
+}
+
+.slide-to {
+  width: 10px;
+  height: 10px;
+  box-shadow: 0 0 2px #6a9cac;
+  border-radius: 50%;
+  margin: 0.25rem;
+  padding: 0;
+}
+.slide-to:hover {
+  background: rgba(106, 156, 172, 0.1);
+}
+
+.active {
+  background: rgba(106, 156, 172, 0.3);
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,5 +1,5 @@
-const descriptionsModule = (() => {
-  const _descriptions = [
+const descriptionsContent = (() => {
+  let _descriptions = [
     {
       title: 'Mountain',
       definition: 'A raised part of the earth\'s surface, much larger than a hill, the top of which might be covered in snow.',
@@ -62,15 +62,20 @@ const descriptionsModule = (() => {
     obj.url = url
   }
 
-  const removeDescription = (index) => {
-    this.descriptions = descriptions.splice(index, 1)
+  const removeDescription = function (index) {
+    _descriptions = _descriptions.splice(index, 1)
   }
 
   const addDescription = (title, definition, location, author, url) => {
     _descriptions.push({ title, definition, location, author, url })
   }
 
+  const getDescription = (index) => {
+    return _descriptions[index]
+  }
+
   return {
+    getDescription,
     changeTitle,
     changeDefinition,
     changeLocation,
@@ -81,29 +86,100 @@ const descriptionsModule = (() => {
   }
 })()
 
-const displayDescriptionsModule = () => {
-
-}
-
-const carouselController = (() => {
-
-  let currentPosition = 0;
-
-  const carousel = document.querySelector('.carousel__images');
-
-  const slideNext = function () {
-    this.currentPosition -= 100;
-    carousel.style.transform = `translateX(${this.currentPosition}%)`;
+const displayDescriptions = (() => {
+  const _description = {
+    title: document.querySelector('#title'),
+    definition: document.querySelector('#definition'),
+    location: document.querySelector('#location'),
+    author: document.querySelector('#author'),
+    url: document.querySelector('#url')
   }
 
+  const changeDescription = (obj) => {
+    _description.url.href = obj.url
+    for (const key in _description) {
+      if (key === 'url') return
+      _description[key].innerHTML = obj[key]
+    }
+  }
+
+  return { changeDescription }
+})()
+
+const carouselController = (() => {
+  let _currentPosition = 0
+
+  const _carousel = document.querySelector('.carousel__images')
+
   const slidePrev = function () {
-    this.currentPosition += 100;
-    carousel.style.transform = `translateX(${this.currentPosition}%)`;
+    // If we are on the 1st picture, there is no 'previous' picture to slide to.
+    if (_currentPosition === 0) return
+
+    _currentPosition += 100
+    _carousel.style.transform = `translateX(${_currentPosition}%)`
+  }
+
+  const slideNext = function () {
+    // If we are on the last picture, there is no 'next' picture to slide to.
+    if (_currentPosition === -(_carousel.childElementCount - 1) * 100) return
+
+    _currentPosition -= 100
+    _carousel.style.transform = `translateX(${_currentPosition}%)`
+  }
+
+  const slideTo = function (index) {
+    _currentPosition = -(index - 1) * 100
+    _carousel.style.transform = `translateX(${_currentPosition}%)`
   }
 
   return {
-    currentPosition,
     slidePrev,
-    slideNext
+    slideNext,
+    slideTo
   }
-})();
+})()
+
+const carouselBtns = (() => {
+  let _active = 1
+
+  const _buttons = document.querySelectorAll('.slide-to')
+
+  const _slidePrev = () => {
+    const prev = document.querySelector('#prev')
+
+    prev.addEventListener('click', carouselController.slidePrev)
+    prev.addEventListener('click', () => _changeActive(_active - 1))
+    prev.addEventListener('click', () => displayDescriptions.changeDescription(descriptionsContent.getDescription(_active - 1)))
+  }
+
+  const _slideNext = () => {
+    const next = document.querySelector('#next')
+    next.addEventListener('click', carouselController.slideNext)
+    next.addEventListener('click', () => _changeActive(_active + 1))
+    next.addEventListener('click', () => displayDescriptions.changeDescription(descriptionsContent.getDescription(_active - 1)))
+  }
+
+  const _slideTo = () => {
+    _buttons.forEach((button) => button.addEventListener('click', (e) => carouselController.slideTo(e.target.dataset.image.slice(6))))
+    _buttons.forEach((button) => button.addEventListener('click', (e) => _changeActive(e.target.dataset.image.slice(6))))
+    _buttons.forEach((button) => button.addEventListener('click', (e) => displayDescriptions.changeDescription(descriptionsContent.getDescription(e.target.dataset.image.slice(6) - 1))))
+  }
+
+  const _changeActive = (index) => {
+    if (index < 1 || index > _buttons.length) return
+
+    _buttons[_active - 1].classList.remove('active')
+    _active = index
+    _buttons[_active - 1].classList.add('active')
+  }
+
+  const enableButtons = () => {
+    _slidePrev()
+    _slideNext()
+    _slideTo()
+  }
+
+  return { enableButtons }
+})()
+
+carouselBtns.enableButtons()
